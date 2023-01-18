@@ -19,12 +19,15 @@ colorscheme purify
 " Spacing
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " Setting textwidth for different filetypes
 autocmd bufreadpre *.py,*.md,*.html setlocal textwidth=99 colorcolumn=99
 autocmd bufreadpre *.cpp,*.h setlocal textwidth=120 colorcolumn=120
 highlight ColorColumn ctermbg=black
+" Recognize launch files as xml
+autocmd bufreadpre *.launch set filetype=xml
 
 " Highlight Extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -251,3 +254,4 @@ endfunction
 
 " makes <CR> confirm selection if any or just break line if none
 inoremap <silent><expr> <cr> EnterSelect()
+
