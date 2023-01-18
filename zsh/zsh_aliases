@@ -1,0 +1,13 @@
+# alias cdsrc="cd ~/robo_demo_ws/src"
+alias la="ls -alF"
+alias ll="ls -alF"
+alias gitfetch="git fetch --all --prune"
+alias gitpull="git pull --rebase"
+alias gitlog="git log --decorate --graph --all"
+alias gitsub="git submodule update --init --recursive"
+alias killros="killall -9 rosmaster && killall -9 roscore"
+alias vi="nvim"
+
+alias cdsrc="cd ~/source_code/robo_demo_ws/src"
+alias cdviz="cd ~/source_code/rtrrt_ws/src/rtrrt_2d_visual/rtrrt_2d_visual/"
+alias source_rtrrt="source ~/source_code/rtrrt_ws/devel/setup.zsh"
