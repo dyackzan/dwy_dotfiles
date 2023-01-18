@@ -2,14 +2,28 @@
 # another cool way to do this would be to build a Docker container for use on different OS
 # but for this case I will make this script assuming ubuntu is installed
 
-# 1. install ohmyzsh and setup with plugins (autosuggestions, highlighting, and theme)
-sudo apt install zsh
+# 1. install tools
+sudo apt install -y git zsh tmux neovim curl npm python3-pip ranger
 
-# 2. install neovim and tmux
+# 2. ZSH setup: place ohmyzsh with plugins (autosuggestions, highlighting, and theme)
+sudo chsh -s `which zsh`
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+pip install pygments
 
-# 3. place neovim, tmux, zshrc, zsh_aliases in correct directory
-#    don't forget to tell tmux where it's config file is located
-sudo apt install tmux neovim
-tmux source-file ~/.config/tmux/tmux.conf
+# 3. DOTFILE placement: place neovim, tmux, zshrc, zsh_aliases, other in correct config directory
+mkdir -p ~/.config/nvim && cp ./nvim/* ~/.config/nvim/
+cp ./zsh/zshrc ~/.zshrc
+cp ./zsh/zsh_aliases ~/.zsh_aliases
+mkdir -p ~/.config/tmux && cp ./tmux/tmux.conf ~/.config/tmux/tmux.conf
+mkdir -p ~/.config/shared && cp ./z.sh ~/.config/shared/
 
-# 4. install npm, nodejs, and ccls and plugins in nvim/init.vim
+# 4. NVIM setup: Install nodejs latest stable and nvim plugins
+sudo npm install n -g
+sudo n stable
+sudo npm install --global pure-prompt
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+nvim 'PlugInstall --sync' +qa

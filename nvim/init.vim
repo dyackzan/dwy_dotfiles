@@ -49,6 +49,8 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 " Include line number and relative numbers of other lines
 set number relativenumber
 
+" COC settings...
+let g:coc_disable_startup_warning = 1
 " Copy paste from https://github.com/neoclide/coc.nvim#example-vim-configuration
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
