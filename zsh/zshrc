@@ -130,3 +130,6 @@ tmux source-file ~/.config/tmux/tmux.conf
 
 # Source z tool
 source ~/.config/shared/z.sh
+
+# source robo_demo_ws
+source ~/source_code/robo_demo_ws/devel/setup.zsh
