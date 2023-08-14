@@ -19,14 +19,21 @@ fi
 if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting
 fi
-pip install pygments ipython scipy numpy pandas
+pip install pygments ipython scipy numpy pandas flake8
 
-# 3. DOTFILE placement: place neovim, tmux, zshrc, zsh_aliases, other in correct config directory
-mkdir -p ~/.config/nvim && cp ./nvim/* ~/.config/nvim/
-cp ./zsh/zshrc ~/.zshrc
-cp ./zsh/zsh_aliases ~/.zsh_aliases
-mkdir -p ~/.config/tmux && cp ./tmux/tmux.conf ~/.config/tmux/tmux.conf
-mkdir -p ~/.config/shared && cp ./z.sh ~/.config/shared/
+# 3. Config file placement: symlink neovim, tmux, zshrc, zsh_aliases, other in correct config directory
+mkdir -p ~/.config/nvim
+ln -s $(pwd)/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s $(pwd)/nvim/init.vim $HOME/.config/nvim/init.vim
+ln -s $(pwd)/zsh/zshrc ~/.zshrc
+ln -s $(pwd)/zsh/zsh_aliases ~/.zsh_aliases
+mkdir -p ~/.config/tmux
+ln -s $(pwd)/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
+if [ ! -d $HOME/.config/shared/z.sh ]; then
+  mkdir -p ~/.config/shared
+  cp $(pwd)/z.sh ~/.config/shared/
+fi
+ln -s $(pwd)/flake8 ~/.config/flake8
 
 # 4. NVIM setup: Install nodejs latest stable and nvim plugins
 sudo npm install n -g
@@ -34,4 +41,5 @@ sudo n stable
 sudo npm install --global pure-prompt
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim 'PlugInstall --sync' +qa
+nvim +'PlugInstall --sync' +qa
+sudo snap install ccls --classic

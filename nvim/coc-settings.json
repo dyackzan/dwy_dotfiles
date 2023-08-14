@@ -3,7 +3,7 @@
   "ccls": {
     "command": "ccls",
     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "rootPatterns": [".ccls", "/home/david/source_code/robo_demo_ws/build/compile_commands.json", "compile_commands.json", ".git/", ".hg/"],
     "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
@@ -14,7 +14,6 @@
 "diagnostic.floatConfig": {
   "border": true
 },
-// autocompletion
 "suggest.enablePreselect": false,
 "suggest.noselect": true
 }

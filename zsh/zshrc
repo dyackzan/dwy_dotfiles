@@ -122,7 +122,7 @@ source ~/.zsh_aliases;
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH=/home/david/.local/bin:$PATH
-source /opt/ros/noetic/setup.zsh
+source /opt/ros/humble/setup.zsh
 if [[ "$TMUX" == "" ]]; then
     tmux
 fi
@@ -130,6 +130,3 @@ tmux source-file ~/.config/tmux/tmux.conf
 
 # Source z tool
 source ~/.config/shared/z.sh
-
-# source robo_demo_ws
-source ~/source_code/robo_demo_ws/devel/setup.zsh
