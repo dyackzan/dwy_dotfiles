@@ -121,12 +121,23 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases;
 export VISUAL=nvim;
 export EDITOR=nvim;
-export PATH=/home/david/.local/bin:$PATH
-source /opt/ros/humble/setup.zsh
+export PATH=~/.local/bin:$PATH
 if [[ "$TMUX" == "" ]]; then
     tmux
 fi
 tmux source-file ~/.config/tmux/tmux.conf
 
-# Source z tool
-source ~/.config/shared/z.sh
+# Source ROS2 and tools
+source /opt/ros/humble/setup.zsh
+source /usr/share/colcon_cd/function/colcon_cd.sh
+export _colcon_cd_root=/opt/ros/humble/
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+
+# set ROS 2 domain ID
+export ROS_DOMAIN_ID=59
+
+# set ROS 2 Discovery range (SUBNET is default which is any node reachable by multicast)
+# export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET # any node reachable by multicast (default)
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST # discover only nodes on same machine
+# export ROS_AUTOMATIC_DISCOVERY_RANGE=OFF # won't discover other nodes, even on same machine
+# export ROS_AUTOMATIC_DISCOVERY_RANGE=SYSTEM_DEFAULT # "don't change discovery settings"

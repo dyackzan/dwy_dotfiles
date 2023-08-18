@@ -3,7 +3,7 @@
   "ccls": {
     "command": "ccls",
     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-    "rootPatterns": [".ccls", "/home/david/source_code/robo_demo_ws/build/compile_commands.json", "compile_commands.json", ".git/", ".hg/"],
+    "rootPatterns": [".ccls", "/home/dwyackzan/test/ros2_ws/build/compile_commands.json", "compile_commands.json", ".git/", ".hg/"],
     "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
@@ -15,5 +15,6 @@
   "border": true
 },
 "suggest.enablePreselect": false,
-"suggest.noselect": true
+"suggest.noselect": true,
+"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd"
 }
