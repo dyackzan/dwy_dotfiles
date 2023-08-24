@@ -122,6 +122,7 @@ source ~/.zsh_aliases;
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH=~/.local/bin:$PATH
+export CPLUS_INCLUDE_PATH=/usr/include/c++/11/
 if [[ "$TMUX" == "" ]]; then
     tmux
 fi
@@ -132,12 +133,20 @@ source /opt/ros/humble/setup.zsh
 source /usr/share/colcon_cd/function/colcon_cd.sh
 export _colcon_cd_root=/opt/ros/humble/
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+# source ~/ws_moveit2/install/setup.zsh
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # set ROS 2 domain ID
 export ROS_DOMAIN_ID=59
+
+# Moveit studio development
+export STUDIO_WS=~/source_code/moveit_studio
+
 
 # set ROS 2 Discovery range (SUBNET is default which is any node reachable by multicast)
 # export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET # any node reachable by multicast (default)
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST # discover only nodes on same machine
 # export ROS_AUTOMATIC_DISCOVERY_RANGE=OFF # won't discover other nodes, even on same machine
 # export ROS_AUTOMATIC_DISCOVERY_RANGE=SYSTEM_DEFAULT # "don't change discovery settings"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,7 +1,5 @@
 #!/bin/sh
 
-cd `catkin locate --workspace $(pwd)`
-
 concatenated="build/compile_commands.json"
 
 echo "[" > $concatenated
@@ -13,6 +11,7 @@ do
 
     if test -f "$f"; then
         if [ $first -eq 0 ]; then
+            echo "Adding compile commands from $d"
             echo "," >> $concatenated
         fi
 

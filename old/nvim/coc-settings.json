@@ -1,0 +1,29 @@
+{
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "highlight": {
+          "lsRanges": true
+        },
+        "clang": {
+          "executable": "/usr/bin/g++",
+          "extraArgs": [
+            "-I/opt/ros/humble/include/", "-I/usr/include/c++/11/", "-I/opt/ros/humble/include/rclcpp/rclcpp"
+          ]
+        }
+      }
+  }
+},
+"diagnostic.floatConfig": {
+  "border": true
+},
+"suggest.enablePreselect": false,
+"suggest.noselect": true,
+"clangd.path": "/usr/bin/clangd"
+}
